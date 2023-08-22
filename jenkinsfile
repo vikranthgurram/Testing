@@ -1,24 +1,30 @@
-pipeline{
-    agent none
-    tools{
-        jdk 'myjava'
-        maven 'mymaven'
+pipeline {
+    agent any
+    parameters{
+        string(name:'Env',defaultValue:'Test',description:'version to deploy')
+
     }
-    stages{
-        stage("COMPILE"){
-            agent {label 'linux_slave'}
-            steps{
+    stages {
+        stage('Compile') {
+            steps {
                 script{
                     echo "Compiling the code"
-                    sh 'mvn compile'
+                  }
+            }
+        }
+        stage('UnitTest') {
+            steps {
+                script{
+                    echo "Running the test cases"
                 }
             }
         }
-        stage("UNITTEST"){
-            agent any
-            steps{
+        stage('Package') {
+            steps {
                 script{
-                    echo "Testing the code"
-                    sh 'mvn test'
+                    echo "Packaging thr code"
                 }
             }
+        }
+    }
+}
