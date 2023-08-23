@@ -4,7 +4,7 @@ pipeline{
         maven 'mymaven'
     }
     stages{
-        stage("COMPILE"){
+        stage("compile"){
             steps{
                 script{
                     echo "Compiling the code"
@@ -12,7 +12,7 @@ pipeline{
                 }
             }
         }
-        stage("UNITTEST"){
+        stage("test"){
             agent any
             steps{
                 script{
@@ -26,7 +26,7 @@ pipeline{
                 }
             }
         }
-         stage("PACKAGE"){
+         stage("package1"){
             steps{
                 script{
                     echo "Packaging the code"
@@ -34,13 +34,6 @@ pipeline{
                 }
             }
         }
-         stage("DEPLOY"){
-            agent slave_node
-            steps{
-                script{
-                    echo "Deploying the app"
-                }
-            }
-        }
+         
     }
 }
