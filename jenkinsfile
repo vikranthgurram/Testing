@@ -5,21 +5,21 @@ pipeline {
 
     }
     stages {
-        stage('Compile') {
+        stage('compile') {
             steps {
                 script{
                     echo "Compiling the code"
                   }
             }
         }
-        stage('UnitTest') {
+        stage('test') {
             steps {
                 script{
                     echo "Running the test cases"
                 }
             }
         }
-        stage('Package') {
+        stage('package1') {
             steps {
                 script{
                     echo "Packaging thr code"
