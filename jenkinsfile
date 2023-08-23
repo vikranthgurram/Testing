@@ -30,7 +30,10 @@ pipeline{
             steps{
                 script{
                     echo "Packaging the code"
-                    sh 'mvn package'
+                   //To Run the package code on another mechine without doing the configuration. we can also configure the mechines through the jenkins file.
+                      //sshagent(['Pem key']){ # pem key for the new server
+                    //sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.35.238(private key of new server) 'mvn package'"
+                  //}
                 }
             }
         }
