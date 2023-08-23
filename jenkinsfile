@@ -39,7 +39,7 @@ pipeline {
                 script{
                     echo "Packaging thr code"
                     echo "Deploying the app version ${params.APPVERSION}"
-                    echo "Packaging the code version ${params.NewVERSION}"
+                    echo "Packaging the code version ${NewVERSION}"
                     
                 }
             }
