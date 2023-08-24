@@ -30,11 +30,10 @@ pipeline{
             steps{
                 script{
                     echo "Packaging the code"
-                     we need to download the ssh agent plugin in jenkins ui page and we need to add the credentional like ssh username with private key(we need to copy of the content of pem file from loval to jenkins ui) the key name we need to add in below ssh pem key.
-                   //To Run the package code on another mechine without doing the configuration. we can also configure the mechines through the jenkins file.
-                      //sshagent(['Pem key']){ # pem key for the new server
-                    //sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.35.238(private key of new server) 'mvn package'"
-                  //}
+                      sshagent(['Buildsshplugin_key']) {
+                        sh "ssh ec2-user@172.31.35.238 'mvn package'"
+                        }
+                  }
                 }
             }
         }
