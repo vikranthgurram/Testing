@@ -30,8 +30,10 @@ pipeline{
             steps{
                 script{
                     echo "Packaging the code"
-               sshagent(['Buildsshplugin_key'])                      
-                 sh "ssh -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.35.238 'bash ~/server-script.sh'"  
+               sshagent(credentials : ['Buildsshplugin_key']) {  
+                 sh 'ssh -o StrictHostKeyChecking=no  ec2-user@172.31.35.238 uptime'
+                 sh "ssh -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.35.238 'bash ~/server-script.sh'" 
+                 }
                 }
             }
         }
@@ -39,4 +41,4 @@ pipeline{
 }
 
 
-        
+   
