@@ -31,7 +31,7 @@ pipeline{
                 script{
                     echo "Packaging the code"
                       sshagent(['Buildsshplugin_key'])                      
-                 sh "ssh -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.35.238 'bash ~/sercer-script.sh'" 
+                 sh "ssh -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.35.238 'bash ~/server-script.sh'"
                         }
                   
                 
