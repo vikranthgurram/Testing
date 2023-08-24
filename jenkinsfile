@@ -26,14 +26,17 @@ pipeline{
                 }
             }
         }
-         stage("package1"){
+        stage("package1"){
             steps{
                 script{
                     echo "Packaging the code"
-                      sshagent(['Buildsshplugin_key'])                      
-                 sh "ssh -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.35.238 'bash ~/server-script.sh'"
-                      }
-                   }
-         
-          }
-   }
+               sshagent(['Buildsshplugin_key'])                      
+                 sh "ssh -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.35.238 'bash ~/server-script.sh'"  
+                }
+            }
+        }
+    }
+}
+
+
+        
